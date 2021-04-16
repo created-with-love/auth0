@@ -8,9 +8,9 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <div>
-        <img src={user.picture} alt={user.name} width={250} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
+        <img src={user?.picture} alt={user?.name} width={250} />
+        <h2>{user?.name}</h2>
+        <p>{user?.email}</p>
         <JSONPretty data={user} />
         {/* {JSON.stringify(user, null, 2)} */}
       </div>
