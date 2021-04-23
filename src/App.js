@@ -48,8 +48,19 @@ function App() {
   return (
     <>
       <h1>This is App#1</h1>
-      <LoginButton />
-      <LogoutButton />
+      <div className="box">
+        <a
+          href="https://created-with-love.github.io/auth0-2"
+          target="_blank"
+          rel="noreferrer"
+          className="link"
+        >
+          Go to the App #2
+        </a>
+        <LoginButton />
+        <LogoutButton />
+      </div>
+
       <Profile />
     </>
   );
