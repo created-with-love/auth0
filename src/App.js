@@ -15,7 +15,7 @@ const override = css`
 `;
 
 function App() {
-  const [token, setToken] = useState(() =>
+  const [, setToken] = useState(() =>
     localStorage.getItem('userToken') ? localStorage.getItem('userToken') : '',
   );
   const { isLoading, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -47,6 +47,7 @@ function App() {
 
   return (
     <>
+      <h1>This is App#1</h1>
       <LoginButton />
       <LogoutButton />
       <Profile />
