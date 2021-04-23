@@ -1,6 +1,8 @@
-import './App.css';
+import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { css } from '@emotion/react';
+import './App.css';
+
 import LoginButton from './components/LoginButton';
 import LogoutButton from './components/LogoutButton';
 import Profile from './components/Profile';
@@ -13,7 +15,24 @@ const override = css`
 `;
 
 function App() {
-  const { isLoading } = useAuth0();
+  const [token, setToken] = useState(() =>
+    localStorage.getItem('userToken') ? localStorage.getItem('userToken') : '',
+  );
+  const { isLoading, isAuthenticated, getAccessTokenSilently } = useAuth0();
+
+  useEffect(() => {
+    const getToken = () => {
+      return getAccessTokenSilently();
+    };
+
+    if (isAuthenticated) {
+      getToken().then(tok => {
+        setToken(tok);
+        localStorage.setItem('userToken', tok);
+        console.log(tok);
+      });
+    }
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   if (isLoading) {
     return (
